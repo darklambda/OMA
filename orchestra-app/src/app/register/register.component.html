@@ -1,0 +1,296 @@
+<mat-card>
+    <form
+    name="form"
+    (ngSubmit)="f.form.valid && onSubmit()"
+    #f="ngForm"
+    novalidate
+    >
+
+        <mat-form-field appearance="fill">
+      <mat-label>Nombre(s)</mat-label>
+      <input matInput
+            type="text"
+            class="form-control"
+            name="name"
+            [(ngModel)]="form.name"
+            required
+            #name="ngModel">
+
+      <div *ngIf="name.invalid && (name.dirty || name.touched)"
+      class="alert">
+        
+          <div *ngIf="name.errors?.['required']">
+            Campo requerido.
+          </div>
+        
+      </div>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Apellido(s)</mat-label>
+      <input matInput
+            type="text"
+              class="form-control"
+              name="last_name"
+              [(ngModel)]="form.last_name"
+              required
+              #last_name="ngModel">
+    <div *ngIf="last_name.invalid && (last_name.dirty || last_name.touched)"
+    class="alert">
+      
+        <div *ngIf="last_name.errors?.['required']">
+          Campo requerido.
+        </div>
+      
+    </div>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Genero</mat-label>
+      <mat-select
+            class="form-control"
+            name="genre"
+            [(ngModel)]="form.genre"
+            required
+            #genre="ngModel">
+            <mat-option *ngFor="let genre of genres" [value]="genre.value">
+              {{genre.viewValue}}
+            </mat-option>
+      </mat-select>
+      <div *ngIf="genre.invalid && (genre.dirty || genre.touched)"
+      class="alert">
+        
+          <div *ngIf="genre.errors?.['required']">
+            Campo requerido.
+          </div>
+        
+      </div>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de Nacimiento</mat-label>
+      <input matInput [matDatepicker]="picker"
+            class="form-control"
+            name="bday_date"
+            [(ngModel)]="form.bday_date"
+            #bday_date="ngModel"
+            required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <div *ngIf="bday_date.invalid && (bday_date.dirty || bday_date.touched)"
+      class="alert">
+        
+          <div *ngIf="bday_date.errors?.['required']">
+            Campo requerido.
+          </div>
+        
+      </div>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-select
+            (ngModelChange)="idChange()"
+            class="form-control"
+            name="type_id"
+            [(ngModel)]="form.type_id"
+            #type_id="ngModel">
+          <mat-option *ngFor="let id of id_type" [value]="id.value">
+            {{id.viewValue}}
+          </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label *ngIf="form.type_id === 'Rut'">Rut</mat-label>
+      <mat-label *ngIf="form.type_id !== 'Rut'">Pasaporte</mat-label>
+      <input matInput
+              (keypress)="keyPressNumbers($event)"
+              (keyup)="formatId()"
+              class="form-control"
+              name="country_id"
+              [(ngModel)]="form.country_id"
+              required
+              #country_id="ngModel">
+    <div *ngIf="country_id.invalid && (country_id.dirty || country_id.touched)"
+    class="alert">
+      
+        <div *ngIf="country_id.errors?.['required']">
+          Campo requerido.
+        </div>
+      
+    </div>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Telefono Movil</mat-label>
+      <input matInput
+              type="text"
+              class="form-control"
+              name="phone_number"
+              [(ngModel)]="form.phone_number"
+              maxlength="9"
+              #phone_number="ngModel">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Ciudad de Residencia</mat-label>
+      <input matInput
+            type="text"
+        class="form-control"
+        name="city_of_residence"
+        [(ngModel)]="form.city_of_residence"
+        #city_of_residence="ngModel">
+    </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label for="email">Correo Electronico</mat-label>
+          <input matInput
+                type="email"
+                class="form-control"
+                name="email"
+                [(ngModel)]="form.email"
+                required
+                #email="ngModel">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="alert">
+          
+            <div *ngIf="email.errors?.['required']">
+              Campo requerido.
+            </div>
+          
+        </div>
+        </mat-form-field>
+    
+    
+        <mat-form-field appearance="fill">
+          <mat-label>Contraseña</mat-label>
+          <input matInput
+                type="password"
+                class="form-control"
+                name="password"
+                [(ngModel)]="form.password"
+                required
+                minlength="6"
+                #password="ngModel">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)"
+        class="alert">
+          
+        <div *ngIf="password.errors?.['required']">
+          Campo requerido.
+        </div>
+
+        <div *ngIf="password.errors?.['minlength']">
+          Contraseña debe tener 6 caracteres como minimo.
+        </div>
+          
+        </div>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+      <mat-label>Instrumento</mat-label>
+      <mat-select
+            class="form-control"
+            name="instrument"
+            [(ngModel)]="form.instrument"
+            #instrument="ngModel">
+          <mat-option *ngFor="let instrument of instruments" [value]="instrument.value">
+            {{instrument.viewValue}}
+          </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+   
+
+    <mat-form-field appearance="fill">
+      <mat-label>Año de Ingreso</mat-label>
+      <mat-select
+            class="form-control"
+            name="initial_year"
+            [(ngModel)]="form.initial_year"
+            #initial_year="ngModel">
+            <mat-option *ngFor="let year of initialYear" [value]="year">
+              {{year}}
+            </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Año Academico</mat-label>
+      <mat-select
+            class="form-control"
+            name="academic_year"
+            [(ngModel)]="form.academic_year"
+            #academic_year="ngModel">
+            <mat-option *ngFor="let year of academicYear" [value]="year">
+              {{year}}
+            </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+ 
+
+    <mat-form-field appearance="fill">
+      <mat-label>Tipo de Integrante</mat-label>
+      <mat-select
+            class="form-control"
+            name="type_musician"
+            [(ngModel)]="form.type_musician"
+            #type_musician="ngModel"
+            required>
+            <mat-option *ngFor="let id of id_musician" [value]="id.value">
+              {{id.viewValue}}
+            </mat-option>
+      </mat-select>
+      <div *ngIf="type_musician.invalid && (type_musician.dirty || type_musician.touched)"
+        class="alert">
+          
+            <div *ngIf="type_musician.errors?.['required']">
+              Campo requerido.
+            </div>
+          
+        </div>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Tipo de Sansano</mat-label>
+      <mat-select
+          class="form-control"
+          name="type_member"
+          [(ngModel)]="form.type_member"
+          #type_member="ngModel"
+          required>
+          <mat-option *ngFor="let id of id_member" [value]="id.value">
+            {{id.viewValue}}
+          </mat-option>
+        </mat-select>
+    <div *ngIf="type_member.invalid && (type_member.dirty || type_member.touched)"
+    class="alert">
+      
+        <div *ngIf="type_member.errors?.['required']">
+          Campo requerido.
+        </div>
+      
+    </div>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Rol</mat-label>
+      <input matInput
+      class="form-control"
+      name="rol"
+      [(ngModel)]="form.rol"
+      #rol="ngModel"
+      [disabled]="form.type_member === 'Externo' || form.type_member === null">
+    </mat-form-field>
+    
+      <mat-checkbox
+      class="form-control"
+      name="admin"
+      [(ngModel)]="form.admin"
+      #admin="ngModel">Admin</mat-checkbox>
+    
+
+    <button mat-button color="accent">Registrarse</button>
+
+  </form>
+  </mat-card>

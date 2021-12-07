@@ -1,0 +1,9 @@
+.file-input {
+    display: none;
+  }
+
+  mat-card {
+    max-width: 70%;
+    margin: 2em auto;
+    text-align: center;
+  }

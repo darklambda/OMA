@@ -1,0 +1,37 @@
+<div>
+  <mat-card>
+    <form
+      *ngIf="!isLoggedIn"
+      name="form2"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+
+    <mat-form-field appearance="fill">
+      <mat-label for="email">Correo Electronico</mat-label>
+      <input matInput
+            type="text"
+            class="form-control"
+            name="email"
+            [(ngModel)]="form2.email"
+            #email="ngModel">
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>Contraseña</mat-label>
+      <input matInput
+            type="password"
+            class="form-control"
+            name="password"
+            [(ngModel)]="form2.password"
+            #password="ngModel">
+    </mat-form-field>
+
+
+    <button mat-button color="accent">Ingresar</button>
+
+  </form>
+  </mat-card>
+  </div>

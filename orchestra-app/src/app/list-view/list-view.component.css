@@ -1,0 +1,28 @@
+
+
+table {
+    margin: auto;
+    width: 80%;
+  }
+  
+.mat-paginator{
+    margin: auto;
+    width: 80%;
+  }
+
+.mat-expansion-panel{
+  margin: auto;
+  width: 80%;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+  }
+
+.mainApp{
+  margin-top: 1%;
+}
+
+.restartButton{
+  padding-left: 45%;
+}

@@ -1,0 +1,133 @@
+<div class="mainApp">
+
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Filtro
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+  
+    <div class="vertical-form-field">
+            <mat-checkbox
+                (click)="applyFilter()"
+                class="form-control"
+                name="active"
+                >Mostrar miembros inactivos. </mat-checkbox>
+    </div>
+
+    <div class="restartButton">
+      <button  mat-raised-button color="primary" (click)="clearFilter()">Reiniciar filtro</button>
+    </div>
+  </mat-expansion-panel>
+
+<table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let user"> {{user.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="last_name">
+        <th mat-header-cell *matHeaderCellDef> Apellido </th>
+        <td mat-cell *matCellDef="let user"> {{user.last_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="instrument">
+        <th mat-header-cell *matHeaderCellDef> Instrumento </th>
+        <td mat-cell *matCellDef="let user"> {{user.instrument}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="genre">
+        <th mat-header-cell *matHeaderCellDef> Sexo </th>
+        <td mat-cell *matCellDef="let user"> 
+            <div *ngIf="user.genre==='Hombre'"> H </div>
+            <div *ngIf="user.genre==='Mujer'"> M </div>
+            <div *ngIf="user.genre==='Otro'"> O </div>  </td>
+    </ng-container>
+
+    <ng-container matColumnDef="bday_date">
+        <th mat-header-cell *matHeaderCellDef> F. Nacimiento </th>
+        <td mat-cell *matCellDef="let user"> {{dateFormat(user.bday_date)}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="initial_year">
+        <th mat-header-cell *matHeaderCellDef> AI </th>
+        <td mat-cell *matCellDef="let user"> {{user.initial_year}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="academic_year">
+        <th mat-header-cell *matHeaderCellDef> AA </th>
+        <td mat-cell *matCellDef="let user"> {{user.academic_year}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let user"> {{user.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone_number">
+        <th mat-header-cell *matHeaderCellDef> Telefono </th>
+        <td mat-cell *matCellDef="let user"> {{user.phone_number}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="country_id">
+        <th mat-header-cell *matHeaderCellDef > Rut o <br>  Pasaporte </th>
+        <td mat-cell *matCellDef="let user"> {{user.country_id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type_member">
+        <th mat-header-cell *matHeaderCellDef> Tipo de Miembro </th>
+        <td mat-cell *matCellDef="let user"> {{user.type_member}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="city_of_residence">
+        <th mat-header-cell *matHeaderCellDef> Comuna de <br> Residencia </th>
+        <td mat-cell *matCellDef="let user"> {{user.city_of_residence}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="rol">
+        <th mat-header-cell *matHeaderCellDef> Rol </th>
+        <td mat-cell *matCellDef="let user"> 
+            <div *ngIf="user.rol!=='' || user.rol!==null"> {{user.rol}} </div>
+            <div *ngIf="user.rol==='' || user.rol===null"> 
+                <div *ngIf="user.type_member==='Externo'"> No aplica </div>
+                <div *ngIf="user.type_member!=='Externo'"> Dato Faltante </div>
+            </div> 
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let user"> 
+            <div *ngIf="user.active == 'Activo'"> Activo </div> 
+            <div *ngIf="user.active == 'Suspendido'"> Suspendido </div> 
+            <div *ngIf="user.active == 'Inactivo'"> Inactivo </div> 
+            <div *ngIf="user.active == 'Baja Permanente'"> Baja Permanente </div> 
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef> Editar </th>
+        <td mat-cell *matCellDef="let user"> 
+            <button mat-icon-button
+                (click)="editUser(user.id)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button 
+                *ngIf="user.email != currentEmail"
+                color="warn"
+                (click)="deleteUser(user.id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+</table>
+<mat-paginator  [pageSize]="10"
+                 showFirstLastButtons 
+                 aria-label="Pagina de Integrantes">
+</mat-paginator>
+
+</div>

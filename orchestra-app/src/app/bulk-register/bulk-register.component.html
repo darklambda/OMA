@@ -1,0 +1,65 @@
+
+<mat-card>
+
+<div *ngIf="!uploading">
+
+<input type="file" class="file-input"
+        [accept]="requiredFileType"
+       (change)="onFileSelected($event)" #fileUpload>
+
+<div class="file-upload">
+
+   {{fileName || "Suba un archivo csv."}}
+
+    <button mat-mini-fab color="primary" class="upload-btn"
+      (click)="fileUpload.click()">
+        <mat-icon>attach_file</mat-icon>
+    </button>
+</div>
+
+<button *ngIf="fileName!==''" (click)="upload()" mat-raised-button color="primary"> Subir </button>
+
+</div>
+
+<div class="progress">
+
+    <mat-progress-bar class="progress-bar" mode="determinate"
+                      [value]="uploadProgress" *ngIf="uploadProgress">
+  
+    </mat-progress-bar>
+  
+    <mat-icon class="cancel-upload" (click)="cancelUpload()" 
+              *ngIf="uploadProgress">delete_forever</mat-icon>
+  
+  </div>
+
+  <div *ngIf="done">
+
+    <mat-icon aria-hidden="false" aria-label="upload-succesful">check_circle</mat-icon>
+
+    <p>Carga completa!</p>
+
+  </div>
+
+  <div *ngIf="failWarning">
+
+    <mat-icon aria-hidden="false" aria-label="upload-succesful">error_outline</mat-icon>
+
+    <p>Carga completa con advertencias.</p>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let line of Message">
+         {{line.error}}
+      </mat-list-item>
+    </mat-nav-list>
+
+  </div>
+
+  <div *ngIf="failedUpload">
+
+    <mat-icon aria-hidden="false" aria-label="upload-succesful">highlight_off</mat-icon>
+
+    <p>Carga fallida.</p>
+    <p>Error interno del servidor.</p>
+
+  </div>
+</mat-card>

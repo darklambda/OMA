@@ -1,0 +1,14 @@
+
+mat-card {  /* agregar mat-card al principio en caso de*/
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+  }
+  
+mat-form-field {
+    display: block;
+}
+
+.center {
+  text-align: center;
+}

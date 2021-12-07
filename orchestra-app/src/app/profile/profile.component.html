@@ -1,0 +1,13 @@
+<mat-card>
+  <h3> Informacion del integrante</h3>
+  <div *ngIf="userInfo!==null"> 
+    {{userInfo.name}}
+    {{userInfo.last_name}}
+    {{userInfo.city_of_residence}}
+    {{userInfo.country_id}}
+    {{userInfo.instrument}}
+    {{userInfo.phone_number}}
+    {{userInfo.type_member}}
+    {{userInfo.type_musician}}
+  </div>
+</mat-card>

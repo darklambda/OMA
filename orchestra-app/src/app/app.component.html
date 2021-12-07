@@ -1,0 +1,22 @@
+<div id="app">
+  <mat-toolbar>
+    <a *ngIf="isLoggedIn" mat-button routerLink="home" >Inicio</a>
+    <a *ngIf="isLoggedIn && isAdmin" mat-button [matMenuTriggerFor]="settingsMenu" >Registro</a>
+    <mat-menu #settingsMenu>
+      <menu mat-menu-item routerLink="register">Nuevo Usuario</menu>
+      <menu mat-menu-item routerLink="import">Importar</menu>
+      <menu mat-menu-item routerLink="export">Exportar</menu>
+    </mat-menu>
+    <a *ngIf="isLoggedIn && isAdmin" mat-button routerLink="list">Integrantes</a>
+    <div class="right">
+      <a *ngIf="isLoggedIn" mat-button routerLink="profile" >Perfil</a>
+      <a *ngIf="!isLoggedIn" mat-button routerLink="register">Registro</a> <!-- FLAG borrar una vez la plataforma este lista-->
+      <a *ngIf="!isLoggedIn" mat-button routerLink="login">Iniciar Sesión</a>
+      <a *ngIf="isLoggedIn" mat-button href (click)="logout()">Cerrar Sesión</a>
+    </div>
+  </mat-toolbar>
+  
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
