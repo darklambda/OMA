@@ -1,5 +1,5 @@
 # OMA
-Orchestra Managment web-App is an implementation of a CRM applied to the managment of information regarding the members of orchestras. 
+Orchestra Managment web-App is an implementation of a CRM applied to the managment of information regarding members of orchestras. 
 As it is a personal project, it is still in a pre-release state, but the main functionalities are the storage of member's personal information,
 the storage of scores in PDF files, the comunication of general messages with relevant info to the members and the management of rehearsals and their respective
 assistance information.
