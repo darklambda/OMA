@@ -26,7 +26,7 @@ For a lack of time, the development of this project is in stand-by.
 
 # RoadMap
 
-- [ ] (Mandatory before retaking the project) Updating Angular version to LTS
+- [ ] (Mandatory before retaking the project) Updating Angular version to latest LTS
 - [x] Storage of member's personal information
 - [x] Export and Import of member's data using cvs files
 - [ ] Filtering of memeber's data
