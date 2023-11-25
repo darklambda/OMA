@@ -14,7 +14,7 @@ The front-end side should simply be served using the command
 foo@bar:~/.../OMA/orchestra-app$ ng serve
 ```
 ## Back-end
-The back-end of the app has a bit more pre-requisites, as you should have the process "postgresql.service" running, and a database already available with the credetentials
+The back-end of the app has one pre-requisites, as you should have the process "postgresql.service" running, and a database already available with the credetentials
 and parameters set in the file "OMA/back-end/config/db.config.js". Then, the Node.js server is served with
 ```console
 foo@bar:~/.../OMA/back-end $ node server.js
@@ -28,8 +28,8 @@ For a lack of time, the development of this project is in stand-by.
 
 - [ ] (Mandatory before retaking the project) Updating Angular version to latest LTS
 - [x] Storage of member's personal information
-- [x] Export and Import of member's data using cvs files
-- [ ] Filtering of memeber's data
+- [x] Export and Import of member's data using csv files
+- [ ] Filtering of member's data
 - [ ] Storage of scores
-- [ ] Messages communication to members (via app's notifications or email's)
+- [ ] Messages communication to members (via notifications through the app or emails)
 - [ ] Rehearsal management
