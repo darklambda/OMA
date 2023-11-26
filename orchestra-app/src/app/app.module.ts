@@ -42,6 +42,8 @@ import { BulkRegisterComponent } from './bulk-register/bulk-register.component';
 import { ExportComponent } from './export/export.component';
 import { ListViewComponent } from './list-view/list-view.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { NewPieceComponent } from './new-piece/new-piece.component';
+import { PieceListComponent } from './piece-list/piece-list.component';
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     BulkRegisterComponent,
     ExportComponent,
     ListViewComponent,
-    EditUserComponent
+    EditUserComponent,
+    NewPieceComponent,
+    PieceListComponent
   ],
   imports: [
     BrowserModule,

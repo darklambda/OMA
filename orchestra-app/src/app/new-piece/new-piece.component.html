@@ -1,0 +1,161 @@
+<mat-card>
+
+    <div *ngIf="!uploading">
+
+        <h3>Registrar Nueva Obra</h3>
+
+        <form
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+        >
+    
+        <mat-form-field class="field" appearance="fill">
+          <mat-label>Nombre de la obra</mat-label>
+          <input matInput
+                type="text"
+                class="form-control"
+                name="name"
+                [(ngModel)]="form.name"
+                required
+                #name="ngModel">
+    
+          <div *ngIf="name.invalid && (name.dirty || name.touched)"
+          class="alert">
+            
+              <div *ngIf="name.errors?.['required']">
+                Campo requerido.
+              </div>
+            
+          </div>
+        </mat-form-field>
+    
+        <mat-form-field class="field" appearance="fill">
+            <mat-label>Compositor</mat-label>
+            <input matInput
+                  type="text"
+                    class="form-control"
+                    name="composer"
+                    [(ngModel)]="form.composer"
+                    #composer="ngModel">
+        </mat-form-field>
+    
+        <mat-form-field class="field" appearance="fill">
+            <mat-label>Año de Composición</mat-label>
+            <input matInput
+                type="number"
+                    class="form-control"
+                    name="year"
+                    [(ngModel)]="form.year"
+                    maxlength="4"
+                    #year="ngModel">
+        </mat-form-field>
+    
+        <mat-form-field class="field" appearance="fill">
+            <mat-label>Código</mat-label>
+            <input matInput
+                type="text"
+                    class="form-control"
+                    name="code"
+                    [(ngModel)]="form.code"
+                    #code="ngModel">
+        </mat-form-field>
+    
+        <div class="field">
+    
+            <div *ngIf="files.length > 0">
+    
+                <h3> Archivos </h3>
+    
+                <div class="file-list" *ngFor="let file of files; let i = index;">
+    
+                    <div>
+    
+                        <mat-form-field class="inst-selector">
+                            <mat-label>Instrumento</mat-label>
+                            <mat-select
+                                  class="form-control"
+                                  name="instrument-{{i}}"
+                                  [(ngModel)]="inst[i]"
+                                  #instrument="ngModel"
+                                  required>
+                                <mat-option *ngFor="let instrument of instruments" [value]="instrument.value">
+                                  {{instrument.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+    
+                        {{file.name}}
+    
+                        <button 
+                        type="button" 
+                        mat-icon-button
+                        (click)="removeFile(i)"
+                        >
+                        <mat-icon>clear</mat-icon>
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+    
+            <input type="file" class="file-input"
+            multiple
+            [accept]="requiredFileType"
+           (change)="onFileSelected($event)" #fileUpload>
+    
+            <button 
+            type="button" 
+            mat-icon-button
+            (click)="fileUpload.click()"
+            >
+            <mat-icon>add_circle</mat-icon>
+            </button>
+            <mat-label>Agregar Archivo</mat-label>
+        </div>
+    
+        <button mat-button type="submit" color="accent">Subir</button>
+        </form>
+
+    </div>
+
+    <div class="progress">
+
+        <mat-progress-bar class="progress-bar" mode="determinate"
+                          [value]="uploadProgress" *ngIf="uploadProgress">
+      
+        </mat-progress-bar>
+      
+        <mat-icon class="cancel-upload" (click)="cancelUpload()" 
+                  *ngIf="uploadProgress">delete_forever</mat-icon>
+      
+      </div>
+    
+      <div *ngIf="done">
+    
+        <mat-icon aria-hidden="false" aria-label="upload-succesful">check_circle</mat-icon>
+    
+        <p>Tanto la pieza como los archivos fueron cargados con exito!</p>
+    
+      </div>
+    
+      <div *ngIf="failWarning">
+    
+        <mat-icon aria-hidden="false" aria-label="upload-succesful">error_outline</mat-icon>
+    
+        <p>Carga Completa, aunque hubo problemas al subir algunos archivos...</p>
+    
+      </div>
+    
+      <div *ngIf="failedUpload">
+    
+        <mat-icon aria-hidden="false" aria-label="upload-succesful">highlight_off</mat-icon>
+    
+        <p>Carga fallida.</p>
+        <p>Error interno del servidor o de la petición.</p>
+    
+      </div>
+
+    
+</mat-card>

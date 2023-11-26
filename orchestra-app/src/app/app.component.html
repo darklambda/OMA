@@ -1,12 +1,20 @@
 <div id="app">
   <mat-toolbar>
     <a *ngIf="isLoggedIn" mat-button routerLink="home" >Inicio</a>
-    <a *ngIf="isLoggedIn && isAdmin" mat-button [matMenuTriggerFor]="settingsMenu" >Registro</a>
-    <mat-menu #settingsMenu>
+
+    <a *ngIf="isLoggedIn && isAdmin" mat-button [matMenuTriggerFor]="registerMenu" >Registro</a>
+    <mat-menu #registerMenu>
       <menu mat-menu-item routerLink="register">Nuevo Usuario</menu>
       <menu mat-menu-item routerLink="import">Importar</menu>
       <menu mat-menu-item routerLink="export">Exportar</menu>
     </mat-menu>
+
+    <a *ngIf="isLoggedIn && isAdmin" mat-button [matMenuTriggerFor]="respositoryMenu" >Repositorio</a>
+    <mat-menu #respositoryMenu>
+      <menu mat-menu-item routerLink="newPiece">Nueva Obra</menu>
+      <menu mat-menu-item routerLink="pieceList">Lista de Obras</menu>
+    </mat-menu>
+
     <a *ngIf="isLoggedIn && isAdmin" mat-button routerLink="list">Integrantes</a>
     <div class="right">
       <a *ngIf="isLoggedIn" mat-button routerLink="profile" >Perfil</a>

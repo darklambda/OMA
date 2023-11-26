@@ -1,0 +1,22 @@
+mat-card {
+  max-width: 70%;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.inst-selector {
+  margin-left: 0; 
+  margin-right: auto;
+}
+
+.field {
+  display:block
+}
+
+.file-input {
+  display: none;
+}
+
+.file-list {
+  display:inline;
+}

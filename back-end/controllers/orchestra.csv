@@ -1,2 +1,4 @@
 "email";"name";"last_name";"instrument";"genre";"bday_date";"initial_year";"academic_year";"phone_number";"type_id";"country_id";"type_musician";"type_member";"city_of_residence";"rol";"active"
-"usergonzalo@gmail.com";"Gonzalo";"Oberreuter";"Violín";"Hombre";"1998-02-24T04:00:00.000Z";2019;1;"953312921";"Rut";"19.607.832-0";"Taller";"Externo";"Ancud";;"Activo"
+"usergonzalo@hotmail.com";"Gonzalo";"Oberreuter";"Violín I";"Hombre";"1998-02-24T04:00:00.000Z";2020;2;"953312921";"Rut";"19.607.832-0";"Planta";"Externo";"Ancud";"";"Activo"
+"cristobal@hotmail.com";"Cristobal";"Mora";"Violín I";"Hombre";"1997-07-31T04:00:00.000Z";2019;1;"900000000";"Rut";"19.555.506-0";"Taller";"Externo";"Lanco";"";"Activo"
+"piero123@hotmail.com";"Mauricio";"Barrios";;"Hombre";"2023-08-15T22:00:00.000Z";;;;"Rut";"19.607.832-0";"Taller";"Estudiante USM";;;"Inactivo"

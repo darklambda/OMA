@@ -6,8 +6,13 @@ const csv = require('csvtojson');
 const { Op } = require("sequelize");
 const fs = require('fs');
 const db = require("../models");
+
 const User = db.user;
+const Piece = db.piece;
+const File = db.file;
+
 var bcrypt = require("bcryptjs");
+const { response } = require('express');
 
 const genres = [
   'Mujer',
@@ -321,6 +326,100 @@ exports.userInfo = (req, res) => {
         res.status(400).send({message: "User not found!"});
       }
     });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({message: "Server error..."});
+  }
+};
+
+exports.newPiece = async (req, res) => {
+  try {
+    if (req.body.composer == 'null'){
+      req.body.composer = null;
+    }
+    if (req.body.code == 'null'){
+      req.body.code = null;
+    }
+    if (req.body.year == 'null'){
+      req.body.year = null;
+    }
+    const piece = await Piece.findOne({where : {
+      name: req.body.name
+    }});
+    if (piece == null) {
+      successfull = true;
+      const newPiece = await Piece.create({
+        name: req.body.name,
+        composer: req.body.composer,
+        code: req.body.code,
+        year: req.body.year
+      });
+      let dir = __dirname + '/../SheetMusic/' + req.body.name ;
+      console.log(dir);
+      fs.access(dir, (error) => {
+        if (error) {
+          fs.mkdir(dir, (error) => {
+            if (error) {
+              console.log(error);
+            } 
+          });
+        } 
+      });
+      if (req.body.fileInstruments !== null){ 
+        console.log(req.body);
+        let instList = req.body.fileInstruments.split(",");
+        for (let ind in instList){
+          try {
+            await File.create({
+              path: dir + req.files[ind.toString()].name,
+              instrument: instList[ind],
+              pieceId: newPiece.id
+            });
+            await req.files[ind.toString()].mv(dir + '/' + req.files[ind.toString()].name);
+          } catch (err) {
+            console.log(err);
+            successfull = false;
+          } 
+        }
+        if (successfull) {
+          res.status(200).send({ success: "Piece and files were registered succesfully!" });
+        } else {
+          res.status(200).send({ message: "Piece was registered succesfully, but there were problems with some files" });
+        }
+
+      } else {
+        res.status(200).send({ message: "Piece was registered succesfully!" });
+      }
+    } else {
+      res.status(400).send({message: "Name already in use!"})
+    }
+  } catch (err) {
+    console.log(err)
+    res.status(400).send({message: err})
+  }
+};
+
+exports.pieceList = async (req, res) => {
+  const pieces = await Piece.findAll({
+    include: 'files'
+  });
+  res.status(200).send(pieces);
+};
+
+exports.deletePiece = (req, res) => {
+  try {
+    
+    res.status(200).send({message: "Piece deleted!"});
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({message: "Server error..."});
+  }
+};
+
+exports.deleteFile = (req, res) => {
+  try {
+    
+    res.status(200).send({message: "File deleted!"});
   } catch (err) {
     console.log(err);
     res.status(500).send({message: "Server error..."});

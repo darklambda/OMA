@@ -8,6 +8,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { BulkRegisterComponent } from './bulk-register/bulk-register.component';
 import { ExportComponent } from './export/export.component';
 import { ListViewComponent } from './list-view/list-view.component';
+import { NewPieceComponent } from './new-piece/new-piece.component';
+import { PieceListComponent } from './piece-list/piece-list.component'; 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'import', component: BulkRegisterComponent },
   { path: 'export', component: ExportComponent},
   { path: 'list', component: ListViewComponent},
+  { path: 'newPiece', component: NewPieceComponent },
+  { path: 'pieceList', component: PieceListComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

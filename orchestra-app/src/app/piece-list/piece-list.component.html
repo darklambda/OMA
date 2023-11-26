@@ -1,0 +1,40 @@
+<div style="text-align: center;">
+    <h2>Lista de Obras</h2>
+</div>
+
+
+<ng-container *ngIf="pieces">
+    <div *ngFor="let piece of pieces">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{piece.name}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="info-block">
+                <div class="info">Compositor: {{piece.composer || "No especificado"}}</div>
+                <div class="info">Año de composición: {{piece.year || "No especificado"}}</div>
+                <div class="info">Código: {{piece.code || "No especificado"}}</div>
+                <div class="info">Última actualización: {{ dateFormat(piece.updatedAt) }}</div>
+            </div>
+
+            <h3>Archivos</h3>
+
+            <ng-container *ngIf="piece.files">
+                <mat-list *ngFor="let file of piece.files">
+                    <mat-list-item> {{file.instrument}} {{file.path}} </mat-list-item>
+                </mat-list>
+            </ng-container>
+            <ng-container *ngIf="!piece.files">
+                <div>Sin archivos</div>
+            </ng-container>
+
+          </mat-expansion-panel>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="!pieces">
+    No hay obras :(
+  </ng-container>
+

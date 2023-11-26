@@ -8,7 +8,6 @@ interface Selector {
   viewValue: string;
 }
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -155,7 +154,7 @@ export class RegisterComponent implements OnInit {
       return true;
     } else {
       var charCode = (event.which) ? event.which : event.keyCode;
-      if ((charCode < 48 || charCode > 57)) {
+      if ((charCode < 48 || charCode > 57 || charCode == 75)) {
         event.preventDefault();
         return false;
       } else {

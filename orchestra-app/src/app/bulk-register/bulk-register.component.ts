@@ -83,8 +83,7 @@ export class BulkRegisterComponent implements OnInit {
       }
       
     }
-  }) 
-
+  }); 
 }
 
 cancelUpload() {

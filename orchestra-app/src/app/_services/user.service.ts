@@ -19,7 +19,7 @@ export class UserService {
   }
 
   getUserList(): Observable<any> { //admin
-    return this.http.get(API_URL + 'listUsers', { responseType: 'json' });
+    return this.http.get(API_URL + 'userList', { responseType: 'json' });
   }
 
   getAdminUserInfo(id: string): Observable<any> { //admin
@@ -28,5 +28,9 @@ export class UserService {
 
   getUserInfo(id: string): Observable<any> { //admin
     return this.http.get(API_URL + 'profile/' + id, { responseType: 'json' });
+  }
+
+  getPieceList(): Observable<any> { //admin
+    return this.http.get(API_URL + 'pieceList', { responseType: 'json' });
   }
 }

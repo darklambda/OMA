@@ -26,4 +26,23 @@ db.sequelize = sequelize;
 
 db.user = require("../models/user.model.js")(sequelize, Sequelize);
 
+db.piece = require("../models/piece.model.js")(sequelize, Sequelize);
+db.file = require("../models/file.model.js")(sequelize, Sequelize);
+db.period = require("../models/period.model.js")(sequelize, Sequelize);
+
+db.period.belongsToMany(db.piece, {
+  through: "period_piece",
+  foreignKey: "periodId",
+  otherKey: "pieceId"
+});
+
+db.piece.belongsToMany(db.period, {
+  through: "period_piece",
+  foreignKey: "pieceId",
+  otherKey: "periodId"
+});
+
+db.piece.hasMany(db.file, {as: 'files'});
+db.file.belongsTo(db.piece);
+
 module.exports = db;

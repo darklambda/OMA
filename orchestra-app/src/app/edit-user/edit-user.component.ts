@@ -201,7 +201,7 @@ export class EditUserComponent implements OnInit {
       return true;
     } else {
       var charCode = (event.which) ? event.which : event.keyCode;
-      if ((charCode < 48 || charCode > 57)) {
+      if ((charCode < 48 || charCode > 57 || charCode == 75)) {
         event.preventDefault();
         return false;
       } else {

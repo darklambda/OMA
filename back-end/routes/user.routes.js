@@ -37,7 +37,7 @@ module.exports = function(app) {
   );
   
   app.get(
-    "/api/test/listUsers",
+    "/api/test/userList",
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.listUsers
   );
@@ -65,5 +65,18 @@ module.exports = function(app) {
     [authJwt.isReqUser],
     controller.userInfo
   );
+
+  app.post(
+    "/api/test/newPiece",
+    [authJwt.verifyToken, authJwt.isAdmin],
+    controller.newPiece
+  );
+
+  app.get(
+    "/api/test/pieceList",
+    [authJwt.verifyToken, authJwt.isAdmin],
+    controller.pieceList
+  );
+
 
 };
