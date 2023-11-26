@@ -1,28 +1,35 @@
-# Orchestra Management (web) App
+# OMA
+Orchestra Management web-App is an implementation of a CRM applied to the handling of information regarding members of orchestras. 
+As it is a personal project, it is still in a pre-release state, but the main functionalities are the storage of member's personal information,
+the storage of scores in PDF files, the comunication of general messages with relevant info to the members and the management of rehearsals and their respective
+assistance information.
 
-## Descripción
+# Local deploy
 
-La siguiente aplicación corresponde a una webApp sobre el stack PEAN para la propuesta de funcionalidades para el manejo y administración de Orquestas de cualquier tipo y nivel.
+The current project is based on the PEAN stack, which means, for running it you should have Node.js in a suitable version, and PostgreSQL.
 
-## ROADMAP
+## Front-end
+The front-end side should simply be served using the command 
+```console
+foo@bar:~/.../OMA/orchestra-app$ ng serve
+```
+## Back-end
+The back-end of the app has one pre-requisites, as you should have the process "postgresql.service" running, and a database already available with the credetentials
+and parameters set in the file "OMA/back-end/config/db.config.js". Then, the Node.js server is served with
+```console
+foo@bar:~/.../OMA/back-end $ node server.js
+```
 
-* Database de miembros de la agrupación. [check]
-* Repositorio de partituras por repertorio.
-* Administración de inventario.
-* Chequeo de asistencia.
-* Mejora en terminos de UI/UX.
+# Current state
 
-## Ejecución
+For a lack of time, the development of this project is in stand-by.
 
-Para poder iniciar ambos extremos de la aplicación en un ambiente local, se debe tener los siguientes programas instalados en una maquina con algun distro de Linux instalado:
-* Angular 13.0
-* Angular CLI 13.0
-* Node 16.10
-* Postgresql
+# RoadMap
 
-Luego, con el servicio de PostgreSQL iniciado, se debe tener una base de datos de nombre "orchestra", cuyo usuario con permisos debe tener las credenciales "orchestra" y "orchestra.
-Finalmente, ejecutar en los siguientes procesos:
- 
-> npm install|   # En la carpeta orchestra-app
-> node server.js # En la carpeta back-end
-> ng serve       # En la carpeta orchestra-app
+- [ ] (Mandatory before retaking the project) Updating Angular version to latest LTS
+- [x] Storage of member's personal information
+- [x] Export and Import of member's data using csv files
+- [ ] Filtering of member's data
+- [ ] Storage of scores
+- [ ] Messages communication to members (via notifications through the app or emails)
+- [ ] Rehearsal management
