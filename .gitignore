@@ -1,1 +1,2 @@
-orchestra-app/node_modules/*
+orchestra-app/node_modules/
+orchestra-app/.angular/
