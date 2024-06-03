@@ -1,13 +1,13 @@
 <mat-card>
-  <h3> Informacion del integrante</h3>
-  <div *ngIf="userInfo!==null"> 
-    {{userInfo.name}}
-    {{userInfo.last_name}}
-    {{userInfo.city_of_residence}}
-    {{userInfo.country_id}}
-    {{userInfo.instrument}}
-    {{userInfo.phone_number}}
-    {{userInfo.type_member}}
-    {{userInfo.type_musician}}
+  <h3> Profile Info</h3>
+  <div class="info" *ngIf="userInfo!==null"> 
+    <div>Name: {{userInfo.name}}</div>
+    <div>Last Name: {{userInfo.last_name}}</div>
+    <div>Residence Town: {{userInfo.city_of_residence}}</div>
+    <div>ID: {{userInfo.country_id}}</div>
+    <div>Instrument: {{userInfo.instrument}}</div>
+    <div>Phone Number: {{userInfo.phone_number}}</div>
+    <div>Type of Member: {{userInfo.type_member}}</div>
+    <div>Type of Musician: {{userInfo.type_musician}}</div>
   </div>
 </mat-card>

@@ -1,6 +1,10 @@
-<div>
-  <mat-card>
+
+  <mat-card class="loginCard">
+
+    <h1 class="title">Log In</h1>
+
     <form
+      class="center"
       *ngIf="!isLoggedIn"
       name="form2"
       (ngSubmit)="f.form.valid && onSubmit()"
@@ -9,7 +13,7 @@
     >
 
     <mat-form-field appearance="fill">
-      <mat-label for="email">Correo Electronico</mat-label>
+      <mat-label for="email">Email</mat-label>
       <input matInput
             type="text"
             class="form-control"
@@ -20,7 +24,7 @@
 
 
     <mat-form-field appearance="fill">
-      <mat-label>Contraseña</mat-label>
+      <mat-label>Password</mat-label>
       <input matInput
             type="password"
             class="form-control"
@@ -30,8 +34,11 @@
     </mat-form-field>
 
 
-    <button mat-button color="accent">Ingresar</button>
+    <button class="center" mat-button color="accent">Go!</button>
 
   </form>
+
+  <p>For testing matters, try the credentials:</p>
+  <p>&nbsp; Email: temp@mail.com</p>
+  <p>&nbsp; password: temp123</p>
   </mat-card>
-  </div>

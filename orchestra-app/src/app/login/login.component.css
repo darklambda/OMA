@@ -1,14 +1,23 @@
-
-mat-card {  /* agregar mat-card al principio en caso de*/
-    max-width: 400px;
-    margin: 2em auto;
-    text-align: center;
-  }
+.loginCard {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
   
 mat-form-field {
     display: block;
 }
 
+.title {
+  text-align: center;
+}
+
 .center {
   text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+  .loginCard {
+    width: 50%;
+  }
 }

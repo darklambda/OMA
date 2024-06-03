@@ -2,7 +2,7 @@
 
     <div *ngIf="!uploading">
 
-        <h3>Registrar Nueva Obra</h3>
+        <h3>Register New Piece</h3>
 
         <form
         name="form"
@@ -12,7 +12,7 @@
         >
     
         <mat-form-field class="field" appearance="fill">
-          <mat-label>Nombre de la obra</mat-label>
+          <mat-label>Name of the Piece</mat-label>
           <input matInput
                 type="text"
                 class="form-control"
@@ -25,14 +25,14 @@
           class="alert">
             
               <div *ngIf="name.errors?.['required']">
-                Campo requerido.
+                Required Field
               </div>
             
           </div>
         </mat-form-field>
     
         <mat-form-field class="field" appearance="fill">
-            <mat-label>Compositor</mat-label>
+            <mat-label>Composer</mat-label>
             <input matInput
                   type="text"
                     class="form-control"
@@ -42,7 +42,7 @@
         </mat-form-field>
     
         <mat-form-field class="field" appearance="fill">
-            <mat-label>Año de Composición</mat-label>
+            <mat-label>Year of Composition</mat-label>
             <input matInput
                 type="number"
                     class="form-control"
@@ -53,7 +53,7 @@
         </mat-form-field>
     
         <mat-form-field class="field" appearance="fill">
-            <mat-label>Código</mat-label>
+            <mat-label>Code</mat-label>
             <input matInput
                 type="text"
                     class="form-control"
@@ -66,14 +66,14 @@
     
             <div *ngIf="files.length > 0">
     
-                <h3> Archivos </h3>
+                <h3> Files </h3>
     
                 <div class="file-list" *ngFor="let file of files; let i = index;">
     
                     <div>
     
                         <mat-form-field class="inst-selector">
-                            <mat-label>Instrumento</mat-label>
+                            <mat-label>Instrument</mat-label>
                             <mat-select
                                   class="form-control"
                                   name="instrument-{{i}}"
@@ -112,10 +112,11 @@
             >
             <mat-icon>add_circle</mat-icon>
             </button>
-            <mat-label>Agregar Archivo</mat-label>
+            <mat-label>Add File</mat-label>
         </div>
     
-        <button mat-button type="submit" color="accent">Subir</button>
+        <p> This is the public demo, so no new pieces for now :(. Ask for a Live Demo!</p>
+        <button disabled="true" mat-button type="submit" color="accent">Upload</button>
         </form>
 
     </div>
@@ -136,7 +137,7 @@
     
         <mat-icon aria-hidden="false" aria-label="upload-succesful">check_circle</mat-icon>
     
-        <p>Tanto la pieza como los archivos fueron cargados con exito!</p>
+        <p>Upload done successfully!</p>
     
       </div>
     
@@ -144,7 +145,7 @@
     
         <mat-icon aria-hidden="false" aria-label="upload-succesful">error_outline</mat-icon>
     
-        <p>Carga Completa, aunque hubo problemas al subir algunos archivos...</p>
+        <p>Upload done with some errors...</p>
     
       </div>
     
@@ -152,8 +153,8 @@
     
         <mat-icon aria-hidden="false" aria-label="upload-succesful">highlight_off</mat-icon>
     
-        <p>Carga fallida.</p>
-        <p>Error interno del servidor o de la petición.</p>
+        <p>Upload failed.</p>
+        <p>Internal server error.</p>
     
       </div>
 

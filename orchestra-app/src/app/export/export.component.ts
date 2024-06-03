@@ -3,8 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../_services/user.service';
 import { saveAs } from 'file-saver';
+import { environment } from 'src/environments/environment';
 
-const AUTH_API = 'http://localhost:8080/api/test/';
+const AUTH_API = environment.AUTH_API;
 
 @Component({
   selector: 'app-export',

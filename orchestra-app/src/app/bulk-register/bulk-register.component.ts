@@ -4,8 +4,9 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
-const AUTH_API = 'http://localhost:8080/api/test/';
+const AUTH_API = environment.AUTH_API;
 
 @Component({
   selector: 'app-bulk-register',

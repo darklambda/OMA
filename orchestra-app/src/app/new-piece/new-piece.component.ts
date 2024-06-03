@@ -4,13 +4,14 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { HttpClient, HttpEventType } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 interface Selector { 
   value: string;
   viewValue: string;
 }
 
-const AUTH_API = 'http://localhost:8080/api/test/';
+const AUTH_API = environment.AUTH_API;
 
 @Component({
   selector: 'app-new-piece',

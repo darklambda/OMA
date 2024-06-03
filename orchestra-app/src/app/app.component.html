@@ -1,26 +1,25 @@
 <div id="app">
-  <mat-toolbar>
-    <a *ngIf="isLoggedIn" mat-button routerLink="home" >Inicio</a>
+  <mat-toolbar class="toolbar">
+    <a *ngIf="isLoggedIn" mat-button routerLink="home" >Home</a>
 
-    <a *ngIf="isLoggedIn && isAdmin" mat-button [matMenuTriggerFor]="registerMenu" >Registro</a>
+    <a *ngIf="isLoggedIn && isAdmin" mat-button [matMenuTriggerFor]="registerMenu" >Members</a>
     <mat-menu #registerMenu>
-      <menu mat-menu-item routerLink="register">Nuevo Usuario</menu>
-      <menu mat-menu-item routerLink="import">Importar</menu>
-      <menu mat-menu-item routerLink="export">Exportar</menu>
+      <menu mat-menu-item routerLink="register">New Member</menu>
+      <menu mat-menu-item routerLink="list">Member List</menu>
+      <menu mat-menu-item routerLink="import">Import Member List</menu>
+      <menu mat-menu-item routerLink="export">Export Member List</menu>
     </mat-menu>
 
-    <a *ngIf="isLoggedIn && isAdmin" mat-button [matMenuTriggerFor]="respositoryMenu" >Repositorio</a>
+    <a *ngIf="isLoggedIn && isAdmin" mat-button [matMenuTriggerFor]="respositoryMenu" >Repertoir</a>
     <mat-menu #respositoryMenu>
-      <menu mat-menu-item routerLink="newPiece">Nueva Obra</menu>
-      <menu mat-menu-item routerLink="pieceList">Lista de Obras</menu>
+      <menu mat-menu-item routerLink="newPiece">New Piece</menu>
+      <menu mat-menu-item routerLink="pieceList">List of Pieces</menu>
     </mat-menu>
-
-    <a *ngIf="isLoggedIn && isAdmin" mat-button routerLink="list">Integrantes</a>
     <div class="right">
-      <a *ngIf="isLoggedIn" mat-button routerLink="profile" >Perfil</a>
-      <a *ngIf="!isLoggedIn" mat-button routerLink="register">Registro</a> <!-- FLAG borrar una vez la plataforma este lista-->
-      <a *ngIf="!isLoggedIn" mat-button routerLink="login">Iniciar Sesión</a>
-      <a *ngIf="isLoggedIn" mat-button href (click)="logout()">Cerrar Sesión</a>
+      <a *ngIf="isLoggedIn" mat-button routerLink="profile" >Profile</a>
+      <!--a *ngIf="!isLoggedIn" mat-button routerLink="register">Registro</a> < FLAG borrar una vez la plataforma este lista-->
+      <a *ngIf="!isLoggedIn" mat-button routerLink="login">Log in</a>
+      <a *ngIf="isLoggedIn" mat-button href (click)="logout()">Log Out</a>
     </div>
   </mat-toolbar>
   

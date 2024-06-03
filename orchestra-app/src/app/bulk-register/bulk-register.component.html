@@ -9,15 +9,17 @@
 
 <div class="file-upload">
 
-   {{fileName || "Suba un archivo csv."}}
+   {{fileName || "Upload a CSV file."}}
 
-    <button mat-mini-fab color="primary" class="upload-btn"
+    <button  mat-mini-fab color="primary" class="upload-btn"
       (click)="fileUpload.click()">
         <mat-icon>attach_file</mat-icon>
     </button>
 </div>
 
-<button *ngIf="fileName!==''" (click)="upload()" mat-raised-button color="primary"> Subir </button>
+<p *ngIf="fileName!==''"> As it is a demo, the Bulk Upload functionality is not available at the moment. Ask for a Live Demo!</p>
+
+<button disabled="true" *ngIf="fileName!==''" (click)="upload()" mat-raised-button color="primary"> Upload </button>
 
 </div>
 
@@ -37,7 +39,7 @@
 
     <mat-icon aria-hidden="false" aria-label="upload-succesful">check_circle</mat-icon>
 
-    <p>Carga completa!</p>
+    <p>Upload Complete!</p>
 
   </div>
 
@@ -45,7 +47,7 @@
 
     <mat-icon aria-hidden="false" aria-label="upload-succesful">error_outline</mat-icon>
 
-    <p>Carga completa con advertencias.</p>
+    <p>Upload Complete with Warnings.</p>
     <mat-nav-list>
       <mat-list-item *ngFor="let line of Message">
          {{line.error}}
@@ -58,8 +60,8 @@
 
     <mat-icon aria-hidden="false" aria-label="upload-succesful">highlight_off</mat-icon>
 
-    <p>Carga fallida.</p>
-    <p>Error interno del servidor.</p>
+    <p>Upload Failed.</p>
+    <p>Internal Server Error.</p>
 
   </div>
 </mat-card>

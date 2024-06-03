@@ -6,8 +6,9 @@ import { Router } from '@angular/router';
 import { UserService } from '../_services/user.service';
 import { DatePipe } from '@angular/common'
 import { TokenStorageService } from '../_services/token-storage.service';
+import { environment } from 'src/environments/environment';
 
-const AUTH_API = 'http://localhost:8080/api/test/';
+const AUTH_API = environment.AUTH_API;
 
 @Component({
   selector: 'app-list-view',
@@ -34,10 +35,15 @@ export class ListViewComponent implements OnInit {
     activeValue: false
   }
 
+  isTemp: boolean = false;
+
   ngOnInit(): void {
     this.fetchData();
     const user = this.tokenStorageService.getUser();
     this.currentEmail = user.email;
+    if (user.email === "temp@mail.com") {
+      this.isTemp = true;
+    }
   }
 
   private createFilter(): (users: UsersList, filter: string) => boolean {

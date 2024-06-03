@@ -23,22 +23,22 @@
 <table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <th mat-header-cell *matHeaderCellDef> Name </th>
         <td mat-cell *matCellDef="let user"> {{user.name}} </td>
     </ng-container>
 
     <ng-container matColumnDef="last_name">
-        <th mat-header-cell *matHeaderCellDef> Apellido </th>
+        <th mat-header-cell *matHeaderCellDef> Last Name </th>
         <td mat-cell *matCellDef="let user"> {{user.last_name}} </td>
     </ng-container>
 
     <ng-container matColumnDef="instrument">
-        <th mat-header-cell *matHeaderCellDef> Instrumento </th>
+        <th mat-header-cell *matHeaderCellDef> Instrument </th>
         <td mat-cell *matCellDef="let user"> {{user.instrument}} </td>
     </ng-container>
 
     <ng-container matColumnDef="genre">
-        <th mat-header-cell *matHeaderCellDef> Sexo </th>
+        <th mat-header-cell *matHeaderCellDef> Sex </th>
         <td mat-cell *matCellDef="let user"> 
             <div *ngIf="user.genre==='Hombre'"> H </div>
             <div *ngIf="user.genre==='Mujer'"> M </div>
@@ -46,17 +46,17 @@
     </ng-container>
 
     <ng-container matColumnDef="bday_date">
-        <th mat-header-cell *matHeaderCellDef> F. Nacimiento </th>
+        <th mat-header-cell *matHeaderCellDef> B-Day </th>
         <td mat-cell *matCellDef="let user"> {{dateFormat(user.bday_date)}} </td>
     </ng-container>
 
     <ng-container matColumnDef="initial_year">
-        <th mat-header-cell *matHeaderCellDef> AI </th>
+        <th mat-header-cell *matHeaderCellDef> IY </th>
         <td mat-cell *matCellDef="let user"> {{user.initial_year}} </td>
     </ng-container>
 
     <ng-container matColumnDef="academic_year">
-        <th mat-header-cell *matHeaderCellDef> AA </th>
+        <th mat-header-cell *matHeaderCellDef> AY </th>
         <td mat-cell *matCellDef="let user"> {{user.academic_year}} </td>
     </ng-container>
 
@@ -66,27 +66,27 @@
     </ng-container>
 
     <ng-container matColumnDef="phone_number">
-        <th mat-header-cell *matHeaderCellDef> Telefono </th>
+        <th mat-header-cell *matHeaderCellDef> Cellphone </th>
         <td mat-cell *matCellDef="let user"> {{user.phone_number}} </td>
     </ng-container>
 
     <ng-container matColumnDef="country_id">
-        <th mat-header-cell *matHeaderCellDef > Rut o <br>  Pasaporte </th>
+        <th mat-header-cell *matHeaderCellDef > Rut or <br>  Passport </th>
         <td mat-cell *matCellDef="let user"> {{user.country_id}} </td>
     </ng-container>
 
     <ng-container matColumnDef="type_member">
-        <th mat-header-cell *matHeaderCellDef> Tipo de Miembro </th>
+        <th mat-header-cell *matHeaderCellDef> Member Type </th>
         <td mat-cell *matCellDef="let user"> {{user.type_member}} </td>
     </ng-container>
 
     <ng-container matColumnDef="city_of_residence">
-        <th mat-header-cell *matHeaderCellDef> Comuna de <br> Residencia </th>
+        <th mat-header-cell *matHeaderCellDef> Residence <br> Town </th>
         <td mat-cell *matCellDef="let user"> {{user.city_of_residence}} </td>
     </ng-container>
 
     <ng-container matColumnDef="rol">
-        <th mat-header-cell *matHeaderCellDef> Rol </th>
+        <th mat-header-cell *matHeaderCellDef> InternalID </th>
         <td mat-cell *matCellDef="let user"> 
             <div *ngIf="user.rol!=='' || user.rol!==null"> {{user.rol}} </div>
             <div *ngIf="user.rol==='' || user.rol===null"> 
@@ -97,7 +97,7 @@
     </ng-container>
 
     <ng-container matColumnDef="active">
-        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <th mat-header-cell *matHeaderCellDef> State </th>
         <td mat-cell *matCellDef="let user"> 
             <div *ngIf="user.active == 'Activo'"> Activo </div> 
             <div *ngIf="user.active == 'Suspendido'"> Suspendido </div> 
@@ -107,18 +107,19 @@
     </ng-container>
 
     <ng-container matColumnDef="edit">
-        <th mat-header-cell *matHeaderCellDef> Editar </th>
+        <th mat-header-cell *matHeaderCellDef><div *ngIf="!isTemp"> Edit</div> </th>
         <td mat-cell *matCellDef="let user"> 
-            <button mat-icon-button
+            <button mat-icon-button *ngIf="!isTemp"
                 (click)="editUser(user.id)">
                 <mat-icon>edit</mat-icon>
             </button>
             <button mat-icon-button 
-                *ngIf="user.email != currentEmail"
+                *ngIf="user.email != currentEmail && !isTemp"
                 color="warn"
                 (click)="deleteUser(user.id)">
                 <mat-icon>delete</mat-icon>
             </button>
+
         </td>
     </ng-container>
     
